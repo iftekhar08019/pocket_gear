@@ -62,14 +62,16 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-3">
-            <img 
-              src="https://p1.hiclipart.com/preview/439/774/372/mobile-app-icon-virtual-reality-icon-mobile-phone-case-green-line-technology-symbol-mobile-phone-accessories-logo-png-clipart.jpg"
-              alt="PocketGear Logo"
-              className="w-10 h-10 rounded-lg object-cover"
-            />
-            <h1 className={`text-2xl font-bold ${
-              isDarkMode ? 'text-white' : 'text-gray-800'
-            }`}>PocketGear</h1>
+            <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity focus:outline-none">
+              <img 
+                src="https://p1.hiclipart.com/preview/439/774/372/mobile-app-icon-virtual-reality-icon-mobile-phone-case-green-line-technology-symbol-mobile-phone-accessories-logo-png-clipart.jpg"
+                alt="PocketGear Logo"
+                className="w-10 h-10 rounded-lg object-cover"
+              />
+              <h1 className={`text-2xl font-bold ${
+                isDarkMode ? 'text-white' : 'text-gray-800'
+              }`}>PocketGear</h1>
+            </Link>
           </div>
           
           {/* Desktop Navigation */}
@@ -149,22 +151,11 @@ export default function Navbar() {
 
             {/* User Menu */}
             {status === 'authenticated' ? (
-              <div className="flex items-center space-x-3">
-                <div className="hidden sm:flex items-center space-x-2 text-sm">
+              <div className="hidden sm:flex items-center space-x-3">
+                <div className="flex items-center space-x-2 text-sm">
                   <FaUser className="w-4 h-4" />
                   <span>{session.user?.name || session.user?.email}</span>
                 </div>
-                <button
-                  onClick={handleSignOut}
-                  className={`inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md transition-colors ${
-                    isDarkMode 
-                      ? 'text-white border-gray-600 bg-gray-700 hover:bg-gray-600' 
-                      : 'text-gray-700 bg-white hover:bg-gray-50'
-                  }`}
-                >
-                  <FaSignOutAlt className="w-4 h-4 mr-2" />
-                  Sign Out
-                </button>
               </div>
             ) : (
               <Link 
@@ -218,21 +209,22 @@ export default function Navbar() {
               Products
             </Link>
             {status === 'authenticated' ? (
-              <div className="px-4 py-2">
-                <div className="text-sm text-gray-500 mb-2">
-                  Signed in as: {session.user?.name || session.user?.email}
+              <div className="px-4 py-3 border-t border-gray-200 dark:border-gray-700">
+                <div className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                  Signed in as: <span className="font-medium text-gray-700 dark:text-gray-300">{session.user?.name || session.user?.email}</span>
                 </div>
                 <button
                   onClick={() => {
                     handleSignOut();
                     setIsMobileMenuOpen(false);
                   }}
-                  className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
+                  className={`w-full flex items-center justify-center px-4 py-3 rounded-lg font-medium transition-colors ${
                     isDarkMode 
-                      ? 'text-gray-300 hover:text-white hover:bg-gray-700' 
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                      ? 'bg-red-600 hover:bg-red-700 text-white' 
+                      : 'bg-red-600 hover:bg-red-700 text-white'
                   }`}
                 >
+                  <FaSignOutAlt className="w-4 h-4 mr-2" />
                   Sign Out
                 </button>
               </div>
