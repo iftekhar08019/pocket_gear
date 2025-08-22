@@ -80,6 +80,22 @@ export default function Navbar() {
             >
               Products
             </Link>
+            {session && (
+              <Link 
+                href="/dashboard" 
+                className={`transition-colors px-3 py-2 rounded-lg ${
+                  pathname.startsWith("/dashboard")
+                    ? isDarkMode 
+                      ? 'bg-blue-600 text-white' 
+                      : 'bg-blue-600 text-white'
+                    : isDarkMode 
+                      ? 'text-gray-300 hover:text-white hover:bg-gray-700' 
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                }`}
+              >
+                Dashboard
+              </Link>
+            )}
           </div>
 
           <div className="flex items-center space-x-4">

@@ -30,7 +30,7 @@ export default function ProductDetailsPage() {
     const fetchProduct = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch('/data.json');
+        const response = await fetch('/api/products');
         const products = await response.json();
         
         // Find product by slug (converted from name)

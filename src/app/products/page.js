@@ -22,9 +22,14 @@ export default function ProductsPage() {
   const { isDarkMode } = useTheme();
 
   useEffect(() => {
-    // Load products from data.json
-    fetch('/data.json')
-      .then(res => res.json())
+    // Load products from MongoDB API
+    fetch('/api/products')
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then(data => {
         setProducts(data);
         setFilteredProducts(data);
@@ -33,6 +38,7 @@ export default function ProductsPage() {
       .catch(err => {
         console.error('Error loading products:', err);
         setIsLoading(false);
+        // You could set an error state here to show a message to users
       });
   }, []);
 

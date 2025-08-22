@@ -39,11 +39,19 @@ export default function Home() {
       setCurrentSlide((prev) => (prev + 1) % heroImages.length);
     }, 5000);
 
-    // Load products
-    fetch('/data.json')
-      .then(res => res.json())
+    // Load products from MongoDB API
+    fetch('/api/products')
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then(data => setProducts(data.slice(0, 4)))
-      .catch(err => console.error('Error loading products:', err));
+      .catch(err => {
+        console.error('Error loading products:', err);
+        // Keep empty products array, will show no featured products
+      });
 
     return () => clearInterval(timer);
   }, []);
