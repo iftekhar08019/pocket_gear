@@ -23,6 +23,15 @@ A modern, responsive e-commerce platform built with Next.js for premium tech acc
 - **Icons**: React Icons
 - **Notifications**: SweetAlert2
 
+## 🖼️ Image Handling Strategy
+
+The application uses a hybrid approach for image optimization:
+
+- **Static Assets** (logos, icons): Next.js `<Image>` component for automatic optimization
+- **User-Uploaded Images** (product photos): Regular `<img>` tags for flexibility
+- **Benefits**: Users can add product images from any external URL without hostname restrictions
+- **Trade-offs**: Product images won't have automatic optimization but maintain user flexibility
+
 ## 📋 Prerequisites
 
 - Node.js 18+ 

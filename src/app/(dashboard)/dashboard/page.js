@@ -2,15 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { 
   FaPlus, 
-  FaList, 
-  FaChartLine, 
-  FaUsers,
-  FaBox,
-  FaArrowRight
+  FaBox, 
+  FaDollarSign, 
+  FaEye, 
+  FaArrowRight,
+  FaChartLine,
+  FaUsers
 } from 'react-icons/fa';
 import { useTheme } from '@/app/contexts/ThemeContext';
 
@@ -249,11 +249,9 @@ export default function DashboardHome() {
                   isDarkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-50 hover:bg-gray-100'
                 }`}
               >
-                <Image
+                <img
                   src={product.image}
                   alt={product.name}
-                  width={64}
-                  height={64}
                   className="w-16 h-16 object-cover rounded-lg"
                 />
                 <div className="flex-1">

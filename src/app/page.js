@@ -3,11 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import Image from 'next/image';
-import { 
-  FaArrowLeft, 
-  FaArrowRight
-} from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight, FaPlay } from 'react-icons/fa';
 import { useTheme } from './contexts/ThemeContext';
 
 // Hero carousel images
@@ -188,11 +184,9 @@ export default function Home() {
                        }`}
                      >
                        <div className="aspect-square overflow-hidden">
-                         <Image
+                         <img
                            src={product.image}
                            alt={product.name}
-                           width={300}
-                           height={300}
                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                          />
                        </div>
