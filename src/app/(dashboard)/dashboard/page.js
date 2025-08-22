@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { 
   FaPlus, 
@@ -181,7 +182,7 @@ export default function DashboardHome() {
         }`}>
           Quick Actions
         </h2>
-        <div className="flex flex-col justify-center items-center w-full gap-4">
+        <div className="flex flex-col justify-center items-center gap-4">
           <Link
             href="/dashboard/add-product"
             className={`p-6 rounded-lg border-2 border-dashed transition-all duration-300 hover:border-solid hover:scale-105 ${
@@ -248,9 +249,11 @@ export default function DashboardHome() {
                   isDarkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-50 hover:bg-gray-100'
                 }`}
               >
-                <img
+                <Image
                   src={product.image}
                   alt={product.name}
+                  width={64}
+                  height={64}
                   className="w-16 h-16 object-cover rounded-lg"
                 />
                 <div className="flex-1">

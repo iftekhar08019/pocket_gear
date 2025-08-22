@@ -1,14 +1,16 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   FaSearch,
   FaFilter,
   FaSortAmountDown,
   FaSortAmountUp,
-  FaStar
+  FaStar,
+  FaTimes
 } from 'react-icons/fa';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -183,9 +185,11 @@ export default function ProductsPage() {
               >
                 {/* Product Image */}
                 <div className="aspect-square overflow-hidden bg-gray-100">
-                  <img
+                  <Image
                     src={product.image}
                     alt={product.name}
+                    width={300}
+                    height={300}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>

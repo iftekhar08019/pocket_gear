@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   FaArrowLeft, 
   FaArrowRight
@@ -187,9 +188,11 @@ export default function Home() {
                        }`}
                      >
                        <div className="aspect-square overflow-hidden">
-                         <img
+                         <Image
                            src={product.image}
                            alt={product.name}
+                           width={300}
+                           height={300}
                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                          />
                        </div>

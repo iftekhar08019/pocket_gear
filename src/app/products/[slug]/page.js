@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   FaArrowLeft, 
   FaStar, 
@@ -151,9 +152,11 @@ export default function ProductDetailsPage() {
           <div className="space-y-4">
             {/* Main Image */}
             <div className="aspect-square overflow-hidden rounded-2xl bg-gray-100">
-              <img
+              <Image
                 src={productImages[selectedImage]}
                 alt={product.name}
+                width={600}
+                height={600}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
@@ -172,9 +175,11 @@ export default function ProductDetailsPage() {
                         : 'border-gray-300 hover:border-gray-400'
                   }`}
                 >
-                  <img
+                  <Image
                     src={image}
                     alt={`${product.name} ${index + 1}`}
+                    width={80}
+                    height={80}
                     className="w-full h-full object-cover"
                   />
                 </button>

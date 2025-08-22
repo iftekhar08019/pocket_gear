@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Swal from 'sweetalert2';
 import { 
   FaPlus, 
@@ -375,9 +376,11 @@ export default function AddProductPage() {
                 Image Preview
               </label>
               <div className="relative">
-                <img
+                <Image
                   src={formData.image}
                   alt="Product preview"
+                  width={400}
+                  height={192}
                   className="w-full max-w-md h-48 object-cover rounded-lg border"
                   onError={(e) => {
                     e.target.style.display = 'none';

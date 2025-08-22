@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
 import Swal from 'sweetalert2';
@@ -63,10 +64,12 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-3">
             <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity focus:outline-none">
-              <img 
+              <Image 
                 src="https://p1.hiclipart.com/preview/439/774/372/mobile-app-icon-virtual-reality-icon-mobile-phone-case-green-line-technology-symbol-mobile-phone-accessories-logo-png-clipart.jpg"
                 alt="PocketGear Logo"
-                className="w-10 h-10 rounded-lg object-cover"
+                width={40}
+                height={40}
+                className="rounded-lg object-cover"
               />
               <h1 className={`text-2xl font-bold ${
                 isDarkMode ? 'text-white' : 'text-gray-800'

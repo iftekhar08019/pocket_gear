@@ -34,7 +34,7 @@ export default function ProductNotFound() {
         <p className={`text-lg mb-8 ${
           isDarkMode ? 'text-gray-300' : 'text-gray-600'
         }`}>
-          Sorry, the product you're looking for doesn't exist or may have been removed.
+          Sorry, the product you&apos;re looking for doesn&apos;t exist or may have been removed.
         </p>
 
         {/* Action Buttons */}
@@ -68,7 +68,7 @@ export default function ProductNotFound() {
         <p className={`text-sm mt-8 ${
           isDarkMode ? 'text-gray-400' : 'text-gray-500'
         }`}>
-          Can't find what you're looking for? Try searching our product catalog or contact our support team.
+          Can&apos;t find what you&apos;re looking for? Try searching our product catalog or contact our support team.
         </p>
       </div>
     </div>

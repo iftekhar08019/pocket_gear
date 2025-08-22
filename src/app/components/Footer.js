@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   FaFacebook,
   FaTwitter,
@@ -24,10 +25,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="inline-flex items-center space-x-3 mb-4 hover:opacity-80 transition-opacity focus:outline-none">
-              <img 
+              <Image 
                 src="https://p1.hiclipart.com/preview/439/774/372/mobile-app-icon-virtual-reality-icon-mobile-phone-case-green-line-technology-symbol-mobile-phone-accessories-logo-png-clipart.jpg"
                 alt="PocketGear Logo"
-                className="w-10 h-10 rounded-lg object-cover"
+                width={40}
+                height={40}
+                className="rounded-lg object-cover"
               />
               <h3 className="text-2xl font-bold">PocketGear</h3>
             </Link>
