@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
+import Swal from 'sweetalert2';
 import { 
   FaUser, 
   FaArrowLeft, 
@@ -19,7 +20,8 @@ import {
   FaMoon,
   FaBars,
   FaTimes,
-  FaSignOutAlt
+  FaSignOutAlt,
+  FaShoppingCart
 } from 'react-icons/fa';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -27,10 +29,30 @@ export default function Navbar() {
   const { isDarkMode, toggleTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const { data: session, status } = useSession();
 
   const handleSignOut = async () => {
-    await signOut({ redirect: false });
+    try {
+      await signOut({ redirect: false });
+      
+      // Show success message
+      Swal.fire({
+        icon: 'success',
+        title: 'Logged Out Successfully!',
+        text: 'You have been signed out. Redirecting to home...',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true
+      });
+      
+      // Redirect to home page after logout
+      setTimeout(() => {
+        router.push('/');
+      }, 2000);
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
   };
 
   return (
