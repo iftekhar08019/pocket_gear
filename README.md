@@ -67,24 +67,80 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## 🗺️ Route Summary
 
-### Public Routes
+### Application Structure
+```
+pocketgear/
+├── src/
+│   ├── app/
+│   │   ├── (dashboard)/           # Route group (no URL impact)
+│   │   │   └── dashboard/         # /dashboard
+│   │   │       ├── page.js        # Dashboard main page
+│   │   │       └── add-product/   # /dashboard/add-product
+│   │   │           └── page.js    # Add product form
+│   │   ├── api/                   # API routes
+│   │   │   ├── auth/
+│   │   │   │   └── [...nextauth]/ # /api/auth/*
+│   │   │   │       └── route.js   # NextAuth endpoints
+│   │   │   ├── products/
+│   │   │   │   └── route.js       # /api/products
+│   │   │   └── test-mongodb/
+│   │   │       └── route.js       # /api/test-mongodb
+│   │   ├── components/            # Reusable components
+│   │   │   ├── Navbar.js          # Main navigation
+│   │   │   ├── Footer.js          # Footer component
+│   │   │   └── contexts/
+│   │   │       └── ThemeContext.js # Theme management
+│   │   ├── dashboard/             # ❌ REMOVED (duplicate route)
+│   │   ├── login/                 # /login
+│   │   │   └── page.js            # Authentication page
+│   │   ├── products/              # /products
+│   │   │   ├── page.js            # Product catalog
+│   │   │   └── [slug]/            # Dynamic product routes
+│   │   │       ├── page.js        # /products/[slug]
+│   │   │       └── not-found.js   # Product not found
+│   │   ├── globals.css            # Global styles
+│   │   ├── layout.js              # Root layout
+│   │   ├── page.js                # Home page (/)
+│   │   └── providers.js           # Context providers
+│   └── lib/
+│       └── mongodb.js             # Database connection
+├── public/                         # Static assets
+│   ├── logo.ico                   # Favicon
+│   └── data.json                  # Sample data
+├── next.config.mjs                # Next.js configuration
+├── package.json                    # Dependencies
+└── README.md                      # This file
+```
+
+### Route Details
+
+#### 🌐 Public Routes
 - **`/`** - Home page with featured products and hero section
 - **`/products`** - Product catalog with search and filtering
 - **`/products/[slug]`** - Individual product detail page
 - **`/login`** - User authentication page
 
-### Protected Routes (Dashboard)
+#### 🔒 Protected Routes (Dashboard)
 - **`/dashboard`** - Main dashboard with statistics and recent products
 - **`/dashboard/add-product`** - Add new product form
 
-### API Routes
+#### ⚙️ API Routes
 - **`/api/auth/[...nextauth]`** - NextAuth.js authentication endpoints
-- **`/api/products`** - Product CRUD operations
+- **`/api/products`** - Product CRUD operations (GET, POST)
 - **`/api/test-mongodb`** - MongoDB connection test
 
-### Components
-- **`/components/Navbar.js`** - Main navigation with theme toggle
-- **`/components/Footer.js` - Footer with social links and company info
+#### 🧩 Components
+- **`/components/Navbar.js`** - Main navigation with theme toggle and user menu
+- **`/components/Footer.js`** - Footer with social links and company info
+- **`/contexts/ThemeContext.js`** - Dark/light theme management
+
+### File Organization Notes
+
+- **Route Groups**: `(dashboard)` is a Next.js route group that doesn't affect the URL structure
+- **Dynamic Routes**: `[slug]` creates dynamic product pages based on product names
+- **API Routes**: All backend functionality is handled through Next.js API routes
+- **Layouts**: `layout.js` files provide consistent structure across routes
+- **Contexts**: Theme and authentication state is managed through React Context
 
 ## 🎨 Theme System
 
