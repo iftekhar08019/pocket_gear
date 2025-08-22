@@ -11,7 +11,8 @@ import {
   FaBox,
   FaArrowRight
 } from 'react-icons/fa';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '@/app/contexts/ThemeContext';
+
 
 export default function DashboardHome() {
   const [stats, setStats] = useState({
@@ -180,7 +181,7 @@ export default function DashboardHome() {
         }`}>
           Quick Actions
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="flex flex-col justify-center items-center w-full gap-4">
           <Link
             href="/dashboard/add-product"
             className={`p-6 rounded-lg border-2 border-dashed transition-all duration-300 hover:border-solid hover:scale-105 ${
@@ -206,30 +207,7 @@ export default function DashboardHome() {
             </div>
           </Link>
 
-          <Link
-            href="/dashboard/products"
-            className={`p-6 rounded-lg border-2 border-dashed transition-all duration-300 hover:border-solid hover:scale-105 ${
-              isDarkMode 
-                ? 'border-gray-600 hover:border-green-500 hover:bg-gray-700' 
-                : 'border-gray-300 hover:border-green-500 hover:bg-green-50'
-            }`}
-          >
-            <div className="text-center">
-              <FaList className={`w-12 h-12 mx-auto mb-4 ${
-                isDarkMode ? 'text-green-400' : 'text-green-600'
-              }`} />
-              <h3 className={`text-lg font-semibold mb-2 ${
-                isDarkMode ? 'text-white' : 'text-gray-900'
-              }`}>
-                Manage Products
-              </h3>
-              <p className={`text-sm ${
-                isDarkMode ? 'text-gray-400' : 'text-gray-600'
-              }`}>
-                Edit or remove existing products
-              </p>
-            </div>
-          </Link>
+         
         </div>
       </motion.div>
 

@@ -11,7 +11,8 @@ import {
   FaCheckCircle,
   FaExclamationTriangle
 } from 'react-icons/fa';
-import { useTheme } from '../../contexts/ThemeContext';
+import { useTheme } from '@/app/contexts/ThemeContext';
+
 
 export default function AddProductPage() {
   const [formData, setFormData] = useState({
