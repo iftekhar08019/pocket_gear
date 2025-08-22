@@ -8,8 +8,7 @@ import {
   FaFilter,
   FaSortAmountDown,
   FaSortAmountUp,
-  FaStar,
-  FaShoppingCart
+  FaStar
 } from 'react-icons/fa';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -212,22 +211,15 @@ export default function ProductsPage() {
                     </div>
                   </div>
 
-                  {/* Action Buttons */}
-                  <div className="flex space-x-2">
-                    <Link
-                      href={`/products/${encodeURIComponent(product.name.toLowerCase().replace(/\s+/g, '-'))}`}
-                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-2 px-3 rounded-lg text-sm font-medium transition-colors"
-                    >
-                      Details
-                    </Link>
-                    <button className={`p-2 rounded-lg transition-colors ${
-                      isDarkMode 
-                        ? 'bg-gray-700 hover:bg-gray-600 text-gray-300' 
-                        : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
-                    }`}>
-                      <FaShoppingCart className="w-4 h-4" />
-                    </button>
-                  </div>
+                                           {/* Action Button */}
+                         <div className="flex">
+                           <Link
+                             href={`/products/${encodeURIComponent(product.name.toLowerCase().replace(/\s+/g, '-'))}`}
+                             className="w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-2 px-3 rounded-lg text-sm font-medium transition-colors"
+                           >
+                             Details
+                           </Link>
+                         </div>
                 </div>
               </motion.div>
             ))}
