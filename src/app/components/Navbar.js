@@ -62,16 +62,16 @@ export default function Navbar() {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-3">
-            <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity focus:outline-none">
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <Link href="/" className="flex items-center space-x-2 sm:space-x-3 hover:opacity-80 transition-opacity focus:outline-none">
               <Image 
                 src="https://p1.hiclipart.com/preview/439/774/372/mobile-app-icon-virtual-reality-icon-mobile-phone-case-green-line-technology-symbol-mobile-phone-accessories-logo-png-clipart.jpg"
                 alt="PocketGear Logo"
-                width={40}
-                height={40}
-                className="rounded-lg object-cover"
+                width={32}
+                height={32}
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg object-cover"
               />
-              <h1 className={`text-2xl font-bold ${
+              <h1 className={`text-lg sm:text-xl md:text-2xl font-bold ${
                 isDarkMode ? 'text-white' : 'text-gray-800'
               }`}>PocketGear</h1>
             </Link>
@@ -159,6 +159,17 @@ export default function Navbar() {
                   <FaUser className="w-4 h-4" />
                   <span>{session.user?.name || session.user?.email}</span>
                 </div>
+                <button
+                  onClick={handleSignOut}
+                  className={`inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md transition-colors ${
+                    isDarkMode 
+                      ? 'text-white border-gray-600 bg-gray-700 hover:bg-gray-600' 
+                      : 'text-gray-700 bg-white hover:bg-gray-50'
+                  }`}
+                >
+                  <FaSignOutAlt className="w-4 h-4 mr-2" />
+                  Sign Out
+                </button>
               </div>
             ) : (
               <Link 

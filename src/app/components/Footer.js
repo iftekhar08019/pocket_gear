@@ -24,15 +24,15 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <Link href="/" className="inline-flex items-center space-x-3 mb-4 hover:opacity-80 transition-opacity focus:outline-none">
+            <Link href="/" className="inline-flex items-center space-x-2 sm:space-x-3 mb-4 hover:opacity-80 transition-opacity focus:outline-none">
               <Image 
                 src="https://p1.hiclipart.com/preview/439/774/372/mobile-app-icon-virtual-reality-icon-mobile-phone-case-green-line-technology-symbol-mobile-phone-accessories-logo-png-clipart.jpg"
                 alt="PocketGear Logo"
-                width={40}
-                height={40}
-                className="rounded-lg object-cover"
+                width={32}
+                height={32}
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg object-cover"
               />
-              <h3 className="text-2xl font-bold">PocketGear</h3>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold">PocketGear</h3>
             </Link>
             <p className={`mb-4 ${
               isDarkMode ? 'text-gray-300' : 'text-gray-300'
