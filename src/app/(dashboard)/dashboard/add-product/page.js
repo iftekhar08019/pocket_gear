@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
+import Swal from 'sweetalert2';
 import { 
   FaPlus, 
   FaImage, 
@@ -123,9 +124,14 @@ export default function AddProductPage() {
       const data = await response.json();
 
       if (response.ok) {
-        setMessage({
-          type: 'success',
-          text: 'Product added successfully! Redirecting to products...'
+        // Show success message with SweetAlert
+        Swal.fire({
+          icon: 'success',
+          title: 'Product Added Successfully!',
+          text: 'Your product has been added. Redirecting to products...',
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true
         });
         
         // Reset form

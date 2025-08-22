@@ -5,6 +5,7 @@ import { signIn, getSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Swal from 'sweetalert2';
 import { 
   FaGoogle, 
   FaEye, 
@@ -48,8 +49,20 @@ export default function LoginPage() {
       if (result?.error) {
         setError('Invalid credentials. Please try again.');
       } else {
+        // Show success message
+        Swal.fire({
+          icon: 'success',
+          title: 'Login Successful!',
+          text: 'Welcome back! Redirecting to products...',
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true
+        });
+        
         // Redirect to products page after successful login
-        router.push('/products');
+        setTimeout(() => {
+          router.push('/products');
+        }, 2000);
       }
     } catch (error) {
       setError('An error occurred. Please try again.');
@@ -71,7 +84,19 @@ export default function LoginPage() {
       if (result?.error) {
         setError('Google login failed. Please try again.');
       } else if (result?.url) {
-        router.push(result.url);
+        // Show success message
+        Swal.fire({
+          icon: 'success',
+          title: 'Google Login Successful!',
+          text: 'Welcome! Redirecting to products...',
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true
+        });
+        
+        setTimeout(() => {
+          router.push(result.url);
+        }, 2000);
       }
     } catch (error) {
       setError('An error occurred. Please try again.');
@@ -111,8 +136,17 @@ export default function LoginPage() {
             disabled={isLoading}
             className="w-full bg-white border-2 border-gray-300 text-gray-700 py-3 px-4 rounded-xl font-medium hover:bg-gray-50 hover:border-gray-400 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed mb-6 flex items-center justify-center"
           >
-            <FaGoogle className="w-5 h-5 mr-3 text-red-500" />
-            Continue with Google
+            {isLoading ? (
+              <>
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-gray-600 mr-3"></div>
+                Signing in...
+              </>
+            ) : (
+              <>
+                <FaGoogle className="w-5 h-5 mr-3 text-red-500" />
+                Continue with Google
+              </>
+            )}
           </button>
 
           {/* Divider */}
@@ -204,13 +238,13 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-blue-600 text-white py-3 px-4 rounded-xl font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed mt-6"
+              className="w-full bg-blue-600 text-white py-3 px-4 rounded-xl font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
             >
               {isLoading ? (
-                <div className="flex items-center justify-center">
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                <>
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
                   Signing in...
-                </div>
+                </>
               ) : (
                 'Sign In'
               )}
